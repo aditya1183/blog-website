@@ -3,9 +3,18 @@ import { BASE_URL } from "../constants";
 import axios from "axios";
 import Blog from "../Components/Blog";
 import { useAuth } from "../contexts/AuthContextProvider";
-import styles from "./MyBlogs.module.css";
+import styles from "./MyBlog.module.css";
 import useAxiosGet from "../hooks/useAxiosGet";
+import { useNavigate } from "react-router-dom";
+export  function myblogsloader(){
+  const user=localStorage.getItem("user");
+  if(!user){
+    navigate("/login");
+
+  }
+}
 function MyBlogs() {
+
   const {
     error,
     isLoading,
@@ -28,3 +37,4 @@ function MyBlogs() {
   );
 }
 export default MyBlogs;
+

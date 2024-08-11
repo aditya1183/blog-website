@@ -17,10 +17,15 @@ function Home() {
     return <h1>{error}</h1>;
   }
   return (
-    <div className={styles.blogs}>
+    <div className="container">
+      <div className="row">
+
+      
+     
       {blogs.map((blog) => (
         <Blog key={blog._id} {...blog} />
       ))}
+      </div>
     </div>
   );
 }
