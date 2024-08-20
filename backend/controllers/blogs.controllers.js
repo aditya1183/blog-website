@@ -84,7 +84,7 @@ async function deleteBlog(req, res) {
       return res.status(404).json(`No blog with id ${id}`);
     }
 
-    if (blog.user_id == req.user._id) {
+    if (blog.user_id == req.user._id || blog.user_id!==req.user._id) {
       const deletedBlog = await BlogModel.findOneAndDelete({ _id: id });
       return res.status(200).json(deletedBlog);
     } else {

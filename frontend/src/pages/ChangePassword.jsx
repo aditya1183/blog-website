@@ -41,7 +41,12 @@ function ChangePassword() {
         toast.info("Password update Sucessfully");
         navigate("/settings");
       }
+      console.log(response);
     } catch (error) {
+      if (error.response.status === 401) {
+        toast.error("Current Password is Incorrect");
+        setCurrentPassword("");
+      }
       setError(error.message);
     } finally {
       setIsLoading(false);
@@ -52,7 +57,6 @@ function ChangePassword() {
     <div className="container mt-5">
       <div className="row justify-content-center">
         <div className="col-md-6">
-          {error && <div className="alert alert-danger">{error}</div>}
           <form
             onSubmit={handleChangePassword}
             className="border p-4 shadow rounded bg-light"
